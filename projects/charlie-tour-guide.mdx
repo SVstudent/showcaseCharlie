@@ -1,34 +1,59 @@
-title: CharlieTourGuy
-description: An immersive AI tour guide that combines 3D Google Maps exploration with a real-time, conversational ElevenLabs voice that feels like a local friend.
+---
+title: Charlie Tour Guide
+description: AI-powered virtual tour guide with real-time voice conversations using ElevenLabs Conversational AI, 3D Google Maps, and Vultr LLM
 authorIds:
   - sathvik-vempati
 categories:
   - agents
-  - text-to-speech
-  - voices
 isFeatured: false
 date: "2025-12-12"
 image: /images/charlie-tour-guide.png
-demoUrl: https://charlie-tour-guide.vercel.app # REPLACE with your actual Vercel URL
+demoUrl: https://charlie-tour-guide.vercel.app
 repoUrl: https://github.com/SVstudent/CharlieTourGuide
 ---
-# CharlieTourGuy
+
+# Charlie Tour Guide
+
 ## Overview
-**CharlieTourGuy** transforms travel research from a lonely list-reading exercise into a lively conversation with a knowledgeable local friend. It combines a rich 3D map interface with a responsive AI persona named "Charlie." You can walk through the streets of San Francisco on Street View while asking Charlie questions like *"What's that building?"* or *"Tell me a fun fact about this area,"* receiving instant, voice-to-voice responses that are aware of your virtual location.
+
+Charlie is an AI-powered virtual tour guide that turns exploring cities into an immersive conversation. Using ElevenLabs Conversational AI, users speak naturally to Charlie—asking for directions, requesting tours, or learning about landmarks—and receive real-time voice responses while watching 3D Google Maps navigate them through the city.
+
 ## Key Features
--   **Context-Aware Conversations**: Charlie knows where you are looking on the map and answers questions based on your specific visual context.
--   **Immersive 3D Exploration**: Seamless integration of Google Maps 3D view and Street View for a "virtual walk."
--   **Real-Time Voice Interaction**: Powered by **ElevenLabs Turbo v2**, Charlie speaks with natural intonation and near-instant latency.
--   **Personalized Memory**: The app remembers your conversation history to make smarter recommendations as the tour progresses.
+
+- **Natural Voice Conversations**: Real-time voice interaction powered by ElevenLabs Conversational AI agent for seamless, low-latency dialogue
+- **3D Interactive Maps**: Google Maps integration with Street View panoramas and animated route visualization
+- **Smart Intent Detection**: Automatically distinguishes between "take me to [place]" routes vs. "give me a tour" sightseeing requests
+- **AI-Powered Place Info**: Click any landmark to hear Charlie describe its history, fun facts, and visitor tips
+
 ## How It Works
-The architecture blends modern frontend interactivity with a powerful AI backend:
-1.  **Frontend**: Built with **React** and the Google Maps API, managing the visual state and capturing user microphone input.
-2.  **AI Orchestration**: The backend (built on **Raindrop Framework**) processes speech and determines intent using **Vultr Serverless Inference**.
-3.  **Voice Synthesis**: We send the generated text to **ElevenLabs** API to synthesize Charlie's distinctive voice, streaming the audio back to the user instantly.
+
+1. User taps the microphone and speaks to Charlie (e.g., "Take me to the Golden Gate Bridge")
+2. ElevenLabs Conversational AI processes speech and generates Charlie's personality-driven response
+3. User's query is sent to a Raindrop backend which uses Vultr LLM (DeepSeek) to extract destinations
+4. Google Places API finds coordinates and the route is rendered on a 3D map
+5. Charlie narrates the journey with text-to-speech as the camera animates along the path
+
 ## Technologies Used
--   **ElevenLabs API**: We use `Turbo v2` for ultra-low latency Text-to-Speech and custom voice cloning for the "Charlie" persona.
--   **Raindrop (LiquidMetal)**: Provides the serverless backend, SmartMemory for conversation context, and SmartBucket for tour data.
--   **Vultr Inference**: Powers the LLM generation logic.
--   **Google Maps Platform**: Delivers the 3D tiling and Street View imagery.
-## Future Plans
-We plan to bring Charlie into the real world with an **AR Mobile App**, allowing users to point their phones at landmarks and hear Charlie's stories on the spot. We also aim to expand the dataset to cover Paris, Tokyo, and New York.
+
+- **ElevenLabs Conversational AI**: Agent-based real-time voice conversations with custom "Charlie" personality
+- **Vultr Serverless Inference**: DeepSeek-R1 LLM for intent parsing and place information generation
+- **Google Maps Platform**: 3D maps, Street View, Places API, Directions API
+- **Raindrop (LiquidMetal AI)**: Serverless backend with SmartMemory for conversation context
+- **React**: Frontend with @elevenlabs/react SDK integration
+
+## Getting Started
+
+```bash
+# Clone the repository
+git clone [https://github.com/SVstudent/CharlieTourGuide.git](https://github.com/SVstudent/CharlieTourGuide.git)
+cd CharlieTourGuide
+
+# Install dependencies
+npm install
+cd frontend && npm install
+
+# Set environment variables
+# REACT_APP_API_URL, ELEVENLABS_API_KEY, GOOGLE_API_KEY
+
+# Run frontend locally
+npm start
